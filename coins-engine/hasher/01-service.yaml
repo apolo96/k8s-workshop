@@ -1,0 +1,14 @@
+# hasher Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: hasher
+  namespace: coins
+spec:
+  type: ClusterIP
+  selector:
+    app: hasher
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

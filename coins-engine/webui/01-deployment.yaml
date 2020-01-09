@@ -1,0 +1,28 @@
+# Deploy webui service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webui
+  namespace: coins
+spec:
+  selector:
+    matchLabels:
+      app: webui
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: webui
+    spec:
+      containers:
+        - name: webui
+          image: dockercoins/webui:v0.1
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "40m"
+            limits:
+              memory: "124Mi"
+              cpu: "100m"

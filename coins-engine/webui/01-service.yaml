@@ -1,0 +1,15 @@
+# webui Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: webui
+  namespace: coins
+spec:
+  type: NodePort
+  selector:
+    app: webui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31234

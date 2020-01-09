@@ -1,0 +1,22 @@
+# Deploy rng service
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rng
+  namespace: coins
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: rng
+  template:
+    metadata:
+      labels:
+        app: rng
+    spec:
+      containers:
+        - name: rng
+          image: dockercoins/rng:v0.1
+          ports:
+            - containerPort: 80

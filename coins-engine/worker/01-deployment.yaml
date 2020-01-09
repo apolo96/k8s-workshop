@@ -1,0 +1,21 @@
+# Deploy worker service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  namespace: coins
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+        - name: worker
+          image: dockercoins/worker:v0.1
+          ports:
+            - containerPort: 80

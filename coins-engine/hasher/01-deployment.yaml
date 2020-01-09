@@ -1,0 +1,21 @@
+# Deploy hasher service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hasher
+  namespace: coins
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: hasher
+  template:
+    metadata:
+      labels:
+        app: hasher
+    spec:
+      containers:
+        - name: hasher
+          image: dockercoins/hasher:v0.1
+          ports:
+            - containerPort: 80
